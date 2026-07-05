@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /thanks
 
-Sitemap: https://www.mudasir.co.in/sitemap.xml
+Sitemap: https://mudasir.co.in/sitemap.xml

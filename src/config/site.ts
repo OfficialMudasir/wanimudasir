@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.mudasir.co.in'
+export const SITE_URL = 'https://mudasir.co.in'
 
 export const siteConfig = {
   name: 'Mudasir Ibrahim',

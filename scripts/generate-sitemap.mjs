@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-const SITE_URL = 'https://www.mudasir.co.in'
+const SITE_URL = 'https://mudasir.co.in'
 const lastmod = new Date().toISOString().split('T')[0]
 
 const staticRoutes = [
@@ -52,4 +52,13 @@ ${urls
 `
 
 writeFileSync(resolve('public/sitemap.xml'), xml, 'utf8')
+
+const robots = `User-agent: *
+Allow: /
+Disallow: /thanks
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`
+
+writeFileSync(resolve('public/robots.txt'), robots, 'utf8')
 console.log(`Generated sitemap with ${urls.length} URLs`)
