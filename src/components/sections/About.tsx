@@ -5,9 +5,7 @@ export function About() {
   return (
     <Section id="about">
       <SectionTitle title="About" description={profile.about.intro} />
-      <p style={{ textAlign: 'center', color: 'var(--color-text-muted)', maxWidth: 720, margin: '-1.5rem auto 2.5rem' }}>
-        {profile.about.secondary}
-      </p>
+      <p className="about__intro-secondary">{profile.about.secondary}</p>
 
       <div className="about__grid fade-in">
         <img src={profile.avatar} alt={profile.name} className="about__image" />

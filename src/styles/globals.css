@@ -89,8 +89,11 @@ button {
 }
 
 .container {
-  width: min(1140px, calc(100% - clamp(1rem, 4vw, 2rem)));
-  margin-inline: auto;
+  width: 100%;
+  max-width: 1140px;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+  margin-inline: 0;
+  margin-right: auto;
 }
 
 .section {
@@ -103,7 +106,7 @@ button {
 }
 
 .section-title {
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
 }
 
@@ -122,12 +125,12 @@ button {
   height: 4px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: var(--radius-full);
-  margin: 0.75rem auto 0;
+  margin: 0.75rem 0 0;
 }
 
 .section-title p {
   max-width: 720px;
-  margin: 0 auto;
+  margin: 0;
   color: var(--color-text-muted);
 }
 
@@ -211,6 +214,7 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 .page-shell {
@@ -479,6 +483,12 @@ button {
   align-items: start;
 }
 
+.about__intro-secondary {
+  color: var(--color-text-muted);
+  max-width: 720px;
+  margin: -1.5rem 0 2.5rem;
+}
+
 @media (max-width: 991px) {
   .about__grid {
     grid-template-columns: 1fr;
@@ -607,7 +617,7 @@ button {
 
 /* Resume */
 .resume__download {
-  text-align: center;
+  text-align: left;
   margin-bottom: 2rem;
 }
 
@@ -676,7 +686,7 @@ button {
 /* Portfolio */
 .portfolio-filters {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.625rem;
   list-style: none;
@@ -707,12 +717,18 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.75rem;
+  justify-items: start;
+}
+
+.portfolio-grid .portfolio-card {
+  width: 100%;
+  max-width: 400px;
 }
 
 .portfolio-empty {
-  text-align: center;
+  text-align: left;
   color: var(--color-text-muted);
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .portfolio-card {
@@ -1036,11 +1052,16 @@ button {
   width: 100%;
 }
 
+.footer .container {
+  max-width: 100%;
+  width: 100%;
+}
+
 .footer__inner {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.5rem 1.25rem;
 }
 
@@ -1049,9 +1070,7 @@ button {
 }
 
 .footer__sep {
-  color: var(--color-text-light);
-  opacity: 0.4;
-  user-select: none;
+  display: none;
 }
 
 .footer a {
@@ -1522,6 +1541,12 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.75rem;
+  justify-items: start;
+}
+
+.cert-grid .cert-card {
+  width: 100%;
+  max-width: 400px;
 }
 
 /* Certification card (portfolio-style) */
@@ -1748,7 +1773,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 2.5rem;
 }
 
@@ -2125,7 +2150,7 @@ button {
 
 /* Learning path badges */
 .badges-intro {
-  text-align: center;
+  text-align: left;
   color: var(--color-text-muted);
   margin: -1rem 0 2rem;
 }
