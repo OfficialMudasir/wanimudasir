@@ -57,3 +57,31 @@ export const navItems = [
   { label: 'Testimonials', icon: 'bx-chat', path: '/testimonials' },
   { label: 'Contact', icon: 'bx-envelope', path: '/contact' },
 ] as const
+
+/** Section ids on the scrollable home page, in order */
+export const homeSectionIds = [
+  'hero',
+  'about',
+  'facts',
+  'skills',
+  'resume',
+  'certifications',
+  'portfolio',
+  'services',
+  'testimonials',
+  'contact',
+] as const
+
+/** Maps sidebar route paths to home-page section element ids */
+export const navPathToSectionId: Record<(typeof navItems)[number]['path'], string> = {
+  '/': 'hero',
+  '/about': 'about',
+  '/facts': 'facts',
+  '/skills': 'skills',
+  '/resume': 'resume',
+  '/certifications': 'certifications',
+  '/portfolio': 'portfolio',
+  '/services': 'services',
+  '/testimonials': 'testimonials',
+  '/contact': 'contact',
+}

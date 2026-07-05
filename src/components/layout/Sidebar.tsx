@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { navItems, profile } from '../../data/profile'
+import { useState, useEffect, useCallback } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { homeSectionIds, navItems, navPathToSectionId, profile } from '../../data/profile'
 import { ThemeToggle } from './ThemeToggle'
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock'
 import { useIsMobileNav } from '../../hooks/useIsMobileNav'
+import { useScrollSpy } from '../../hooks/useScrollSpy'
 
 interface SidebarProps {
   open: boolean
   onClose: () => void
 }
 
-function isNavActive(pathname: string, path: string) {
+function isRouteNavActive(pathname: string, path: string) {
   if (path === '/') {
     return pathname === '/' || pathname === ''
   }
@@ -23,10 +24,75 @@ function isNavActive(pathname: string, path: string) {
   return pathname === path
 }
 
+function isOnHomePath(pathname: string) {
+  return pathname === '/' || pathname === ''
+}
+
 export function Sidebar({ open, onClose }: SidebarProps) {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const onHome = isOnHomePath(pathname)
+  const activeSection = useScrollSpy(onHome ? homeSectionIds : [], 160)
+  const [pendingSection, setPendingSection] = useState<string | null>(null)
 
-  const handleNavClick = () => {
+  const isNavActive = useCallback(
+    (path: string) => {
+      if (onHome) {
+        const sectionId = navPathToSectionId[path as keyof typeof navPathToSectionId]
+        return sectionId === activeSection
+      }
+      return isRouteNavActive(pathname, path)
+    },
+    [activeSection, onHome, pathname],
+  )
+
+  const scrollToSection = useCallback((sectionId: string) => {
+    const el = document.getElementById(sectionId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [])
+
+  const handleNavClick = useCallback(
+    (event: React.MouseEvent, path: string) => {
+      const sectionId = navPathToSectionId[path as keyof typeof navPathToSectionId]
+
+      if (onHome && sectionId) {
+        event.preventDefault()
+        scrollToSection(sectionId)
+        if (window.innerWidth < 1200) onClose()
+        return
+      }
+
+      if (!onHome && sectionId && path !== pathname) {
+        event.preventDefault()
+        setPendingSection(sectionId)
+        navigate('/')
+        if (window.innerWidth < 1200) onClose()
+        return
+      }
+
+      if (window.innerWidth < 1200) onClose()
+    },
+    [navigate, onClose, onHome, pathname, scrollToSection],
+  )
+
+  useEffect(() => {
+    if (!onHome || !pendingSection) return
+
+    const timer = window.setTimeout(() => {
+      scrollToSection(pendingSection)
+      setPendingSection(null)
+    }, 120)
+
+    return () => window.clearTimeout(timer)
+  }, [onHome, pendingSection, scrollToSection])
+
+  const handleHomeClick = (event: React.MouseEvent) => {
+    if (onHome) {
+      event.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
     if (window.innerWidth < 1200) onClose()
   }
 
@@ -41,7 +107,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
         <div className="sidebar__profile">
           <img src={profile.avatar} alt={profile.name} className="sidebar__avatar" />
           <h1 className="sidebar__name">
-            <Link to="/" onClick={handleNavClick}>
+            <Link to="/" onClick={handleHomeClick}>
               {profile.name}
             </Link>
           </h1>
@@ -70,8 +136,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={isNavActive(pathname, item.path) ? 'active' : ''}
-                  onClick={handleNavClick}
+                  className={isNavActive(item.path) ? 'active' : ''}
+                  onClick={(event) => handleNavClick(event, item.path)}
                 >
                   <i className={`bx ${item.icon}`} />
                   <span>{item.label}</span>

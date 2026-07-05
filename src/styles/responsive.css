@@ -5,6 +5,15 @@
     padding-top: 4.25rem;
   }
 
+  .home-scroll .hero {
+    padding-top: max(4.5rem, calc(3.5rem + env(safe-area-inset-top, 0px)));
+  }
+
+  .home-scroll .hero,
+  .home-scroll .section {
+    scroll-margin-top: 4.5rem;
+  }
+
   .sidebar {
     width: min(85vw, var(--sidebar-width));
     box-shadow: var(--shadow-lg);

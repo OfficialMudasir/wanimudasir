@@ -224,6 +224,21 @@ button {
   transform: translateY(-2px);
 }
 
+/* Home scroll layout */
+.home-scroll {
+  width: 100%;
+}
+
+.home-scroll .hero,
+.home-scroll .section {
+  scroll-margin-top: 5rem;
+}
+
+.home-scroll .hero {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
 /* Layout */
 #root {
   width: 100%;
