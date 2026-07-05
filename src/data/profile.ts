@@ -40,7 +40,6 @@ export const profile = {
     address: 'Keharpora Kokernag Anantnag, J&K, 192202',
     email: 'wanimudasir312@gmail.com',
     phone: '+91 78895 48173',
-    mapUrl: 'https://maps.google.com/maps?q=Kehar%20pora&t=k&z=8&ie=UTF8&iwloc=&output=embed',
   },
 }
 
