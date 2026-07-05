@@ -23,7 +23,7 @@ export const profile = {
   degree: "Master's of Computer Applications",
   email: 'wanimudasir312@gmail.com',
   freelance: 'Available',
-  resumeUrl: asset('assets/img/portfolio/Resume/Resume_Mudasir.pdf'),
+  resumeUrl: asset('assets/img/portfolio/Resume/Resume_Mudasir_Ahmad_Wani.pdf'),
   social: {
     twitter: 'https://twitter.com/home?lang=en',
     facebook: 'https://www.facebook.com/wani.mudasir.1004',
