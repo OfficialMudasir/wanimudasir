@@ -1,0 +1,19 @@
+{
+  "name": "Mudasir Ibrahim — Portfolio",
+  "short_name": "Mudasir",
+  "description": "Senior Software Engineer and Full Stack Developer portfolio",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/assets/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

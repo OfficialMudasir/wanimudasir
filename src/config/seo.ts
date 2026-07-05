@@ -26,11 +26,13 @@ function pageMeta(
 }
 
 export const PAGE_META = {
-  home: pageMeta(
-    siteConfig.name,
-    siteConfig.description,
-    '/',
-  ),
+  home: {
+    title: `${siteConfig.name} — ${siteConfig.title}`,
+    description: siteConfig.description,
+    path: '/',
+    image: siteConfig.ogImage,
+    type: 'website' as const,
+  },
   about: pageMeta(
     'About',
     'Learn about Mudasir Ibrahim — background, experience, and approach as a full stack software engineer.',
@@ -80,6 +82,12 @@ export const PAGE_META = {
     'Thank You',
     'Your message has been sent successfully.',
     '/thanks',
+    { noIndex: true },
+  ),
+  notFound: pageMeta(
+    'Page Not Found',
+    'The page you are looking for could not be found on Mudasir Ibrahim\'s portfolio.',
+    '/404',
     { noIndex: true },
   ),
 } as const

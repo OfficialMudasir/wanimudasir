@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { OptimizedImage } from '../ui/OptimizedImage'
 
 interface ProjectGalleryProps {
   images: string[]
@@ -14,7 +15,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
     return (
       <div className="project-gallery project-gallery--empty">
         <div className="project-gallery__placeholder">
-          <i className="bi bi-image" />
+          <i className="bi bi-image" aria-hidden="true" />
           <span>No preview available</span>
         </div>
       </div>
@@ -24,14 +25,17 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
   return (
     <div className="project-gallery">
       <div className="project-gallery__main">
-        <img
+        <OptimizedImage
           key={activeImage}
           src={activeImage}
-          alt={`${title} screenshot ${activeIndex + 1}`}
+          alt={`${title} screenshot ${activeIndex + 1} of ${safeImages.length}`}
           className="project-gallery__hero-img"
+          width={1280}
+          height={720}
+          priority={activeIndex === 0}
         />
         {safeImages.length > 1 && (
-          <div className="project-gallery__counter">
+          <div className="project-gallery__counter" aria-live="polite">
             {activeIndex + 1} / {safeImages.length}
           </div>
         )}
@@ -49,7 +53,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
               className={`project-gallery__thumb ${index === activeIndex ? 'project-gallery__thumb--active' : ''}`}
               onClick={() => setActiveIndex(index)}
             >
-              <img src={img} alt="" loading="lazy" />
+              <OptimizedImage src={img} alt="" width={88} height={60} loading="lazy" aria-hidden="true" />
             </button>
           ))}
         </div>

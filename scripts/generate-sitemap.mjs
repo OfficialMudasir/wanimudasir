@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const SITE_URL = 'https://www.mudasir.co.in'
+const lastmod = new Date().toISOString().split('T')[0]
 
 const staticRoutes = [
   '/',
@@ -41,8 +42,9 @@ ${urls
   .map(
     (path) => `  <url>
     <loc>${SITE_URL}${path === '/' ? '' : path}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${path === '/' ? 'weekly' : 'monthly'}</changefreq>
-    <priority>${path === '/' ? '1.0' : '0.8'}</priority>
+    <priority>${path === '/' ? '1.0' : path.startsWith('/projects') ? '0.9' : '0.8'}</priority>
   </url>`,
   )
   .join('\n')}

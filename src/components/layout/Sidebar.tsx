@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { homeSectionIds, navItems, navPathToSectionId, profile } from '../../data/profile'
+import { OptimizedImage } from '../ui/OptimizedImage'
 import { ThemeToggle } from './ThemeToggle'
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock'
 import { useIsMobileNav } from '../../hooks/useIsMobileNav'
@@ -105,7 +106,15 @@ export function Sidebar({ open, onClose }: SidebarProps) {
       />
       <aside className={`sidebar ${open ? '' : 'sidebar--hidden'}`} id="header">
         <div className="sidebar__profile">
-          <img src={profile.avatar} alt={profile.name} className="sidebar__avatar" />
+          <OptimizedImage
+            src={profile.avatar}
+            alt=""
+            className="sidebar__avatar"
+            width={110}
+            height={110}
+            priority
+            aria-hidden="true"
+          />
           <h1 className="sidebar__name">
             <Link to="/" onClick={handleHomeClick}>
               {profile.name}

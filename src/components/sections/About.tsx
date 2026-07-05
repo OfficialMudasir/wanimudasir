@@ -1,3 +1,4 @@
+import { OptimizedImage } from '../ui/OptimizedImage'
 import { profile } from '../../data/profile'
 import { Section, SectionTitle } from '../ui/Section'
 
@@ -8,7 +9,14 @@ export function About() {
       <p className="about__intro-secondary">{profile.about.secondary}</p>
 
       <div className="about__grid fade-in">
-        <img src={profile.avatar} alt={profile.name} className="about__image" />
+        <OptimizedImage
+          src={profile.avatar}
+          alt={`Portrait of ${profile.name}`}
+          className="about__image"
+          width={480}
+          height={480}
+          loading="lazy"
+        />
         <div>
           <h3>Full Stack &amp; Software Developer.</h3>
           <p style={{ fontStyle: 'italic', color: 'var(--color-text-muted)' }}>{profile.about.tagline}</p>

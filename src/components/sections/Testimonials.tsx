@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Autoplay } from 'swiper/modules'
+import { OptimizedImage } from '../ui/OptimizedImage'
 import { testimonials } from '../../data/testimonials'
 import { Section, SectionTitle } from '../ui/Section'
 
@@ -33,7 +34,14 @@ export function Testimonials() {
                 <i className="bx bxs-quote-alt-left quote-icon-left" /> {t.quote}{' '}
                 <i className="bx bxs-quote-alt-right quote-icon-right" />
               </p>
-              <img src={t.image} alt={t.name} className="testimonial-card__img" loading="lazy" />
+              <OptimizedImage
+                src={t.image}
+                alt={`Photo of ${t.name}`}
+                className="testimonial-card__img"
+                width={64}
+                height={64}
+                loading="lazy"
+              />
               <h3>{t.name}</h3>
               <h4>{t.role}</h4>
             </div>

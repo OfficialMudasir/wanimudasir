@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { OptimizedImage } from '../ui/OptimizedImage'
 import { portfolioFilters, projects } from '../../data/projects'
 import type { ProjectCategory } from '../../data/projects'
 import { Section, SectionTitle } from '../ui/Section'
@@ -28,10 +29,12 @@ function PortfolioCard({
     <Link to={`/projects/${slug}`} className="portfolio-card" aria-label={`View project: ${title}`}>
       <div className="portfolio-card__image-wrap">
         {!imgError ? (
-          <img
+          <OptimizedImage
             src={thumbnail}
-            alt={title}
+            alt={`${title} project screenshot`}
             className="portfolio-card__image"
+            width={640}
+            height={400}
             loading="lazy"
             onError={() => setImgError(true)}
           />

@@ -1,5 +1,3 @@
-import { asset } from '../data/profile'
-
 export const SITE_URL = 'https://www.mudasir.co.in'
 
 export const siteConfig = {
@@ -12,7 +10,7 @@ export const siteConfig = {
   email: 'wanimudasir312@gmail.com',
   phone: '+91-7889548173',
   location: 'Anantnag, Jammu and Kashmir, India',
-  ogImage: asset('assets/img/mudasir.jpg'),
+  ogImage: absoluteUrl('/assets/img/mudasir.jpg'),
   twitterHandle: '@mudasir_ibrahim',
   sameAs: [
     'https://www.linkedin.com/in/mudasir-ibrahim-9298891a7/',

@@ -23,6 +23,7 @@ const ProjectDetailPage = lazy(() =>
   import('./pages/ProjectDetailPage').then((m) => ({ default: m.ProjectDetailPage })),
 )
 const ThanksPage = lazy(() => import('./pages/ThanksPage').then((m) => ({ default: m.ThanksPage })))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })))
 
 export default function App() {
   return (
@@ -44,6 +45,7 @@ export default function App() {
               <Route path="contact" element={<ContactPage />} />
               <Route path="projects/:slug" element={<ProjectDetailPage />} />
               <Route path="thanks" element={<ThanksPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Suspense>

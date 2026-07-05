@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/optimize-images.mjs && node scripts/generate-sitemap.mjs",
     "build": "tsc -b && vite build",
     "build:godaddy": "tsc -b && vite build --mode godaddy",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "optimize-images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -21,6 +23,7 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "sharp": "^0.33.5",
     "typescript": "~5.7.2",
     "vite": "^6.0.5"
   }

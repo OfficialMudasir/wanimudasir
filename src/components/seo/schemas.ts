@@ -1,5 +1,6 @@
 import type { Certification } from '../../data/certifications'
 import type { Project } from '../../data/projects'
+import { toAbsoluteAssetUrl } from '../../lib/images'
 import { absoluteUrl, siteConfig } from '../../config/site'
 
 export function personSchema() {
@@ -55,7 +56,7 @@ export function projectSchema(project: Project) {
     '@type': 'CreativeWork',
     name: project.title,
     url: absoluteUrl(`/projects/${project.slug}`),
-    image: project.thumbnail,
+    image: toAbsoluteAssetUrl(project.thumbnail),
     author: {
       '@type': 'Person',
       name: siteConfig.name,
