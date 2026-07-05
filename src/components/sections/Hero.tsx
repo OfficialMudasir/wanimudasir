@@ -1,17 +1,16 @@
-import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { profile } from '../../data/profile'
 import { useTypewriter } from '../../hooks/useScrollSpy'
+import { HeroBackground } from './HeroBackground'
+import { HeroCursorEffects } from './HeroCursorEffects'
 
 export function Hero() {
   const typed = useTypewriter(profile.typedRoles)
 
-  const heroStyle = {
-    '--hero-bg-image': `url("${profile.heroBackground}")`,
-  } as CSSProperties
-
   return (
-    <section id="hero" className="hero" style={heroStyle}>
+    <section id="hero" className="hero">
+      <HeroBackground />
+      <HeroCursorEffects />
       <div className="hero__content fade-in">
         <h1>{profile.name}</h1>
         <p className="hero__tagline">

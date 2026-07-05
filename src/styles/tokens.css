@@ -20,6 +20,9 @@
   --bp-md: 767px;
   --bp-lg: 991px;
   --bp-xl: 1199px;
+
+  --card-cta-bg: #ffffff;
+  --card-cta-text: #0f172a;
 }
 
 /* Light theme */

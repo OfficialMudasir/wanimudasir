@@ -12,6 +12,11 @@ export const profile = {
   ],
   avatar: asset('assets/img/mudasir.jpg'),
   heroBackground: asset('assets/img/p11.jpg'),
+  heroBackgroundGifs: [
+    asset('assets/img/gifs/Gihiy1.gif'),
+    asset('assets/img/gifs/881563d6444b370fa4ceea0c3183bb4c.gif'),
+    asset('assets/img/gifs/881563d6444b370fa4ceea0c3183bb4c (1).gif'),
+  ],
   website: 'www.officialmudasir.com',
   phone: '+91-7889548173',
   city: 'Anantnag, Jammu and Kashmir',
