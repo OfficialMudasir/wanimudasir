@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navItems, profile } from '../../data/profile'
+import { ThemeToggle } from './ThemeToggle'
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock'
+import { useIsMobileNav } from '../../hooks/useIsMobileNav'
 
 interface SidebarProps {
   open: boolean
@@ -82,20 +85,47 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   )
 }
 
-export function MobileToggle({ onClick }: { onClick: () => void }) {
+export function MobileToggle({ onClick, open }: { onClick: () => void; open: boolean }) {
   return (
-    <button className="mobile-toggle" onClick={onClick} aria-label="Toggle navigation">
-      <i className="bi bi-list" />
+    <button
+      type="button"
+      className="mobile-toggle"
+      onClick={onClick}
+      aria-label={open ? 'Close navigation' : 'Open navigation'}
+      aria-expanded={open}
+      aria-controls="header"
+    >
+      <i className={`bi ${open ? 'bi-x-lg' : 'bi-list'}`} />
     </button>
   )
 }
 
 export function SidebarLayout({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const isMobileNav = useIsMobileNav()
+
+  useBodyScrollLock(open && isMobileNav)
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false)
+    }
+
+    if (open) {
+      window.addEventListener('keydown', onKeyDown)
+      return () => window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
 
   return (
     <>
-      <MobileToggle onClick={() => setOpen((v) => !v)} />
+      <ThemeToggle />
+      <MobileToggle open={open} onClick={() => setOpen((value) => !value)} />
       <Sidebar open={open} onClose={() => setOpen(false)} />
       <div className="app-main">{children}</div>
     </>

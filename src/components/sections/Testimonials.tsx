@@ -20,8 +20,9 @@ export function Testimonials() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         breakpoints={{
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          576: { slidesPerView: 1, spaceBetween: 16 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 24 },
         }}
         className="fade-in"
       >

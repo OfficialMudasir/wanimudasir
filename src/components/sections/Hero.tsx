@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { profile } from '../../data/profile'
 import { useTypewriter } from '../../hooks/useScrollSpy'
@@ -5,14 +6,12 @@ import { useTypewriter } from '../../hooks/useScrollSpy'
 export function Hero() {
   const typed = useTypewriter(profile.typedRoles)
 
+  const heroStyle = {
+    '--hero-bg-image': `url("${profile.heroBackground}")`,
+  } as CSSProperties
+
   return (
-    <section
-      id="hero"
-      className="hero"
-      style={{
-        backgroundImage: `linear-gradient(135deg, rgba(11, 18, 32, 0.92), rgba(11, 18, 32, 0.75)), url("${profile.heroBackground}")`,
-      }}
-    >
+    <section id="hero" className="hero" style={heroStyle}>
       <div className="hero__content fade-in">
         <h1>{profile.name}</h1>
         <p className="hero__tagline">
