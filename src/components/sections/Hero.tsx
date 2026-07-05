@@ -3,6 +3,7 @@ import { profile } from '../../data/profile'
 import { useTypewriter } from '../../hooks/useScrollSpy'
 import { HeroBackground } from './HeroBackground'
 import { HeroCursorEffects } from './HeroCursorEffects'
+import { HeroScrollCue } from './HeroScrollCue'
 
 export function Hero() {
   const typed = useTypewriter(profile.typedRoles)
@@ -26,6 +27,7 @@ export function Hero() {
           </Link>
         </div>
       </div>
+      <HeroScrollCue targetId="home-intro" />
     </section>
   )
 }

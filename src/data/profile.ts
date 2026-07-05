@@ -60,6 +60,7 @@ export const navItems = [
 /** Section ids on the scrollable home page, in order */
 export const homeSectionIds = [
   'hero',
+  'home-intro',
   'about',
   'facts',
   'skills',

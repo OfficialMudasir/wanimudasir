@@ -52,9 +52,15 @@ for (const relative of referencedImages) {
   }
 
   try {
-    await sharp(input)
+    await sharp(input, { failOn: 'none' })
       .webp({ quality: 82, effort: 4 })
       .toFile(output)
+
+    const outSize = readFileSync(output).length
+    if (outSize === 0) {
+      console.warn(`Skipped ${relative}: generated WebP is empty`)
+      continue
+    }
 
     converted += 1
     console.log(`WebP: ${relative} → ${relative.replace(/\.(png|jpe?g)$/i, '.webp')}`)

@@ -2,6 +2,7 @@ import { PAGE_META } from '../config/seo'
 import { personSchema, websiteSchema } from '../components/seo/schemas'
 import { PageSeo } from '../components/seo/PageSeo'
 import { Hero } from '../components/sections/Hero'
+import { HomeResumeIntro } from '../components/sections/HomeResumeIntro'
 import { About } from '../components/sections/About'
 import { Facts } from '../components/sections/Facts'
 import { Skills } from '../components/sections/Skills'
@@ -18,6 +19,7 @@ export function HomePage() {
       <PageSeo meta={PAGE_META.home} schema={[personSchema(), websiteSchema()]} />
       <div className="home-scroll">
         <Hero />
+        <HomeResumeIntro />
         <About />
         <Facts />
         <Skills />
