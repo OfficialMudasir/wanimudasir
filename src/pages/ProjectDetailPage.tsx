@@ -34,7 +34,7 @@ export function ProjectDetailPage() {
     <article className="project-page">
       <header className="project-hero">
         <div className="container project-hero__inner">
-          <Link to="/#portfolio" className="project-hero__back">
+          <Link to="/portfolio" className="project-hero__back">
             <i className="bi bi-arrow-left" /> Back to Portfolio
           </Link>
           <span className="project-hero__badge">{categoryLabel[project.category]}</span>

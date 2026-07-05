@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { profile } from '../../data/profile'
 import { useTypewriter } from '../../hooks/useScrollSpy'
 
@@ -18,6 +19,14 @@ export function Hero() {
           I&apos;m <span className="hero__typed">{typed}</span>
           <span className="hero__cursor">|</span>
         </p>
+        <div className="hero__actions">
+          <Link to="/about" className="btn btn--primary">
+            About Me
+          </Link>
+          <Link to="/portfolio" className="btn btn--outline">
+            View Portfolio
+          </Link>
+        </div>
       </div>
     </section>
   )

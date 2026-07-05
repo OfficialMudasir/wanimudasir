@@ -23,9 +23,9 @@ export const profile = {
   social: {
     twitter: 'https://twitter.com/home?lang=en',
     facebook: 'https://www.facebook.com/wani.mudasir.1004',
-    instagram: 'https://www.instagram.com/official_mudasir.786/',
+    instagram: 'https://www.instagram.com/mudasir.ibrahim_/',
     skype: 'https://go.skype.com/sfw',
-    linkedin: 'https://www.linkedin.com/in/wani-mudasir-9298891a7/',
+    linkedin: 'https://www.linkedin.com/in/mudasir-ibrahim-9298891a7/',
   },
   about: {
     intro: `Solution driven web developer adept at contributing to highly collaborative work environment, finding solutions and determining customer satisfaction. With 6+ years of practical exposure and hands-on experience, I have played significant role in nurturing and honing development/logical skills in ASP.NET and .NET Core.`,
@@ -41,13 +41,13 @@ export const profile = {
 }
 
 export const navItems = [
-  { id: 'hero', label: 'Home', icon: 'bx-home' },
-  { id: 'about', label: 'About', icon: 'bx-user' },
-  { id: 'facts', label: 'Facts', icon: 'bx-bar-chart-alt-2' },
-  { id: 'skills', label: 'Skills', icon: 'bx-code-alt' },
-  { id: 'resume', label: 'Resume', icon: 'bx-file-blank' },
-  { id: 'portfolio', label: 'Portfolio', icon: 'bx-book-content' },
-  { id: 'services', label: 'Services', icon: 'bx-server' },
-  { id: 'testimonials', label: 'Testimonials', icon: 'bx-chat' },
-  { id: 'contact', label: 'Contact', icon: 'bx-envelope' },
-]
+  { label: 'Home', icon: 'bx-home', path: '/' },
+  { label: 'About', icon: 'bx-user', path: '/about' },
+  { label: 'Facts', icon: 'bx-bar-chart-alt-2', path: '/facts' },
+  { label: 'Skills', icon: 'bx-code-alt', path: '/skills' },
+  { label: 'Resume', icon: 'bx-file-blank', path: '/resume' },
+  { label: 'Portfolio', icon: 'bx-book-content', path: '/portfolio' },
+  { label: 'Services', icon: 'bx-server', path: '/services' },
+  { label: 'Testimonials', icon: 'bx-chat', path: '/testimonials' },
+  { label: 'Contact', icon: 'bx-envelope', path: '/contact' },
+] as const

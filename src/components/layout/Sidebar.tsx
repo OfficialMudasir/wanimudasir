@@ -1,18 +1,24 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navItems, profile } from '../../data/profile'
-import { useScrollSpy } from '../../hooks/useScrollSpy'
 
 interface SidebarProps {
   open: boolean
   onClose: () => void
 }
 
+function isNavActive(pathname: string, path: string) {
+  if (path === '/') {
+    return pathname === '/' || pathname === ''
+  }
+  if (path === '/portfolio') {
+    return pathname === '/portfolio' || pathname.startsWith('/projects/')
+  }
+  return pathname === path
+}
+
 export function Sidebar({ open, onClose }: SidebarProps) {
-  const location = useLocation()
-  const isHome = location.pathname === '/' || location.pathname === ''
-  const sectionIds = navItems.map((n) => n.id)
-  const activeSection = useScrollSpy(sectionIds)
+  const { pathname } = useLocation()
 
   const handleNavClick = () => {
     if (window.innerWidth < 1200) onClose()
@@ -54,21 +60,18 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
         <nav aria-label="Main navigation">
           <ul className="sidebar__nav">
-            {navItems.map((item) => {
-              const isActive = isHome && activeSection === item.id
-              return (
-                <li key={item.id}>
-                  <Link
-                    to={{ pathname: '/', hash: `#${item.id}` }}
-                    className={isActive ? 'active' : ''}
-                    onClick={handleNavClick}
-                  >
-                    <i className={`bx ${item.icon}`} />
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              )
-            })}
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className={isNavActive(pathname, item.path) ? 'active' : ''}
+                  onClick={handleNavClick}
+                >
+                  <i className={`bx ${item.icon}`} />
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </aside>
@@ -84,11 +87,7 @@ export function MobileToggle({ onClick }: { onClick: () => void }) {
   )
 }
 
-export function SidebarLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export function SidebarLayout({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
 
   return (
