@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npm run build:godaddy",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ]
+}
