@@ -9,6 +9,8 @@ import { PortfolioPage } from './pages/PortfolioPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { TestimonialsPage } from './pages/TestimonialsPage'
 import { ContactPage } from './pages/ContactPage'
+import { CertificationsPage } from './pages/CertificationsPage'
+import { CertificationDetailPage } from './pages/CertificationDetailPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { ThanksPage } from './pages/ThanksPage'
 
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="facts" element={<FactsPage />} />
           <Route path="skills" element={<SkillsPage />} />
           <Route path="resume" element={<ResumePage />} />
+          <Route path="certifications" element={<CertificationsPage />} />
+          <Route path="certifications/:id" element={<CertificationDetailPage />} />
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="testimonials" element={<TestimonialsPage />} />

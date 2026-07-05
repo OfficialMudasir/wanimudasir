@@ -2,6 +2,10 @@
   "buildCommand": "npm run build:godaddy",
   "outputDirectory": "dist",
   "rewrites": [
+    {
+      "source": "/api/ms-achievements",
+      "destination": "https://learn.microsoft.com/api/achievements/user/8dcfa459-fe57-4621-91b5-62e1f9bb1644?locale=en-us"
+    },
     { "source": "/((?!assets/).*)", "destination": "/index.html" }
   ]
 }

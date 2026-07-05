@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { MS_LEARN_USER_ID } from './src/config/microsoftLearn'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -8,5 +9,15 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base,
+    server: {
+      proxy: {
+        '/api/ms-achievements': {
+          target: 'https://learn.microsoft.com',
+          changeOrigin: true,
+          rewrite: () =>
+            `/api/achievements/user/${MS_LEARN_USER_ID}?locale=en-us`,
+        },
+      },
+    },
   }
 })

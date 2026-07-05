@@ -14,6 +14,9 @@ function isNavActive(pathname: string, path: string) {
   if (path === '/portfolio') {
     return pathname === '/portfolio' || pathname.startsWith('/projects/')
   }
+  if (path === '/certifications') {
+    return pathname === '/certifications' || pathname.startsWith('/certifications/')
+  }
   return pathname === path
 }
 

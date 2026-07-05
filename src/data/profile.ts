@@ -46,6 +46,7 @@ export const navItems = [
   { label: 'Facts', icon: 'bx-bar-chart-alt-2', path: '/facts' },
   { label: 'Skills', icon: 'bx-code-alt', path: '/skills' },
   { label: 'Resume', icon: 'bx-file-blank', path: '/resume' },
+  { label: 'Certifications', icon: 'bx-certification', path: '/certifications' },
   { label: 'Portfolio', icon: 'bx-book-content', path: '/portfolio' },
   { label: 'Services', icon: 'bx-server', path: '/services' },
   { label: 'Testimonials', icon: 'bx-chat', path: '/testimonials' },

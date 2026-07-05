@@ -7,7 +7,9 @@ export function Layout() {
   return (
     <div className="app-layout">
       <SidebarLayout>
-        <Outlet />
+        <div className="app-main__content">
+          <Outlet />
+        </div>
         <Footer />
       </SidebarLayout>
       <BackToTop />
