@@ -1,10 +1,11 @@
 import { Resume } from '../components/sections/Resume'
-import { PageShell } from '../components/layout/PageShell'
+import { SectionPage } from '../components/layout/SectionPage'
+import { PAGE_META } from '../config/seo'
 
 export function ResumePage() {
   return (
-    <PageShell>
+    <SectionPage meta={PAGE_META.resume}>
       <Resume />
-    </PageShell>
+    </SectionPage>
   )
 }

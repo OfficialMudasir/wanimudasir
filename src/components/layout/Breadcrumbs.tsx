@@ -7,16 +7,16 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ title, current }: BreadcrumbsProps) {
   return (
-    <section className="breadcrumbs">
+    <nav className="breadcrumbs" aria-label="Breadcrumb">
       <div className="container breadcrumbs__inner">
-        <h2>{title}</h2>
+        <h2 className="breadcrumbs__title">{title}</h2>
         <ol>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>{current}</li>
+          <li aria-current="page">{current}</li>
         </ol>
       </div>
-    </section>
+    </nav>
   )
 }

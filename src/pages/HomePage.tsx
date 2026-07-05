@@ -1,3 +1,6 @@
+import { PAGE_META } from '../config/seo'
+import { personSchema, websiteSchema } from '../components/seo/schemas'
+import { PageSeo } from '../components/seo/PageSeo'
 import { Hero } from '../components/sections/Hero'
 import { About } from '../components/sections/About'
 import { Facts } from '../components/sections/Facts'
@@ -11,17 +14,20 @@ import { Contact } from '../components/sections/Contact'
 
 export function HomePage() {
   return (
-    <main className="home-scroll">
-      <Hero />
-      <About />
-      <Facts />
-      <Skills />
-      <Resume />
-      <CertificationsSection />
-      <Portfolio />
-      <Services />
-      <Testimonials />
-      <Contact />
-    </main>
+    <>
+      <PageSeo meta={PAGE_META.home} schema={[personSchema(), websiteSchema()]} />
+      <div className="home-scroll">
+        <Hero />
+        <About />
+        <Facts />
+        <Skills />
+        <Resume />
+        <CertificationsSection />
+        <Portfolio />
+        <Services />
+        <Testimonials />
+        <Contact />
+      </div>
+    </>
   )
 }

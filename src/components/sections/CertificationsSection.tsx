@@ -4,7 +4,7 @@ import { useAchievements } from '../../hooks/useAchievements'
 import { Section, SectionTitle } from '../ui/Section'
 
 export function CertificationsSection() {
-  const { badgeCount, trophyCount, totalCount, loading } = useAchievements()
+  const { badgeCount, trophyCount, totalCount, loading, error } = useAchievements()
 
   return (
     <Section id="certifications" muted className="certifications-page">
@@ -32,6 +32,12 @@ export function CertificationsSection() {
           View all on Microsoft Learn <i className="bi bi-box-arrow-up-right" />
         </a>
       </div>
+
+      {error && (
+        <p className="achievements-error" role="status">
+          Microsoft Learn achievements could not be loaded. Certification cards still show earned credentials.
+        </p>
+      )}
 
       <div className="cert-grid fade-in">
         {certifications.map((cert) => (

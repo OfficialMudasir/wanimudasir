@@ -25,7 +25,7 @@ function PortfolioCard({
   const [imgError, setImgError] = useState(false)
 
   return (
-    <Link to={`/projects/${slug}`} className="portfolio-card">
+    <Link to={`/projects/${slug}`} className="portfolio-card" aria-label={`View project: ${title}`}>
       <div className="portfolio-card__image-wrap">
         {!imgError ? (
           <img
@@ -67,13 +67,14 @@ export function Portfolio() {
         description="A collection of my work showcasing skills and experience across web design, development, and enterprise applications."
       />
 
-      <ul className="portfolio-filters fade-in">
+      <ul className="portfolio-filters fade-in" role="list" aria-label="Project categories">
         {portfolioFilters.map((f) => (
           <li key={f.id}>
             <button
               type="button"
               className={filter === f.id ? 'active' : ''}
               onClick={() => setFilter(f.id)}
+              aria-pressed={filter === f.id}
             >
               {f.label}
             </button>

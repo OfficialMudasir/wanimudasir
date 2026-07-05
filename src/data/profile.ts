@@ -11,7 +11,6 @@ export const profile = {
     '.NET & React Specialist',
   ],
   avatar: asset('assets/img/mudasir.jpg'),
-  heroBackground: asset('assets/img/p11.jpg'),
   heroBackgroundGifs: [
     asset('assets/img/gifs/Gihiy1.gif'),
     asset('assets/img/gifs/881563d6444b370fa4ceea0c3183bb4c.gif'),

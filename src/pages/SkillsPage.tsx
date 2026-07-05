@@ -1,10 +1,11 @@
 import { Skills } from '../components/sections/Skills'
-import { PageShell } from '../components/layout/PageShell'
+import { SectionPage } from '../components/layout/SectionPage'
+import { PAGE_META } from '../config/seo'
 
 export function SkillsPage() {
   return (
-    <PageShell>
+    <SectionPage meta={PAGE_META.skills}>
       <Skills />
-    </PageShell>
+    </SectionPage>
   )
 }

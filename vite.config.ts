@@ -9,6 +9,18 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base,
+    build: {
+      target: 'es2020',
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            swiper: ['swiper'],
+          },
+        },
+      },
+    },
     server: {
       proxy: {
         '/api/ms-achievements': {
